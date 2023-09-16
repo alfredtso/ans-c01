@@ -21,3 +21,8 @@ module "a_bunch_of_subnet" {
   source = "../../modules/base/subnet"
   vpc_id = module.a_bunch_of_vpc.vpc_ids
 }
+
+module "a_bunch_of_ec2" {
+  source = "../../modules/base/ec2"
+  subnet_ids = module.a_bunch_of_subnet.subnet_ids
+}

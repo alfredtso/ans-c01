@@ -1,0 +1,76 @@
+{
+    "Vpcs": [
+        {
+            "CidrBlock": "10.21.0.0/16",
+            "DhcpOptionsId": "dopt-0431fa7b741b2705b",
+            "State": "available",
+            "VpcId": "vpc-072ac092e92499279",
+            "OwnerId": "692247192354",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-0aab5c42d2fdc8c0d",
+                    "CidrBlock": "10.21.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": false,
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "private2_1"
+                }
+            ]
+        },
+        {
+            "CidrBlock": "10.20.0.0/16",
+            "DhcpOptionsId": "dopt-0431fa7b741b2705b",
+            "State": "available",
+            "VpcId": "vpc-04997375e13626cc0",
+            "OwnerId": "692247192354",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-0058d70d58dcd1668",
+                    "CidrBlock": "10.20.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": false,
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "private1_1"
+                }
+            ]
+        },
+        {
+            "CidrBlock": "10.19.0.0/16",
+            "DhcpOptionsId": "dopt-0431fa7b741b2705b",
+            "State": "available",
+            "VpcId": "vpc-0dacc2a725db30c8d",
+            "OwnerId": "692247192354",
+            "InstanceTenancy": "default",
+            "CidrBlockAssociationSet": [
+                {
+                    "AssociationId": "vpc-cidr-assoc-04542c5cb48b7acc6",
+                    "CidrBlock": "10.19.0.0/16",
+                    "CidrBlockState": {
+                        "State": "associated"
+                    }
+                }
+            ],
+            "IsDefault": false,
+            "Tags": [
+                {
+                    "Key": "Name",
+                    "Value": "public_1"
+                }
+            ]
+        }
+    ]
+}
