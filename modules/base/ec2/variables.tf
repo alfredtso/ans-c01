@@ -11,6 +11,13 @@ variable "vpc_region1" {
                 ]
 }
 
+variable "instance_count" {}
+
+variable "ec2_monitoring" {
+  description = "If detailed monitoring is enabled"
+  default = false
+}
+
 variable "aws_ami" {
   type = string
   default = "ami-04cb4ca688797756f"

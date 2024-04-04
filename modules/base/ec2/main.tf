@@ -14,8 +14,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "region_1" {
-  count = length(var.subnet_ids)
+  count = var.instance_count
   ami = var.aws_ami
+  monitoring = var.ec2_monitoring
   instance_type = var.instance_t
   subnet_id = var.subnet_ids[count.index]
   tags = {
