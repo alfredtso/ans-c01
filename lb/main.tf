@@ -19,6 +19,7 @@ module "alb" {
   version = "9.8.0"
 
   subnets = [ module.vpc.public_subnets[0], module.vpc.public_subnets[1] ]
+  enable_deletion_protection = false
 
   security_groups = [ module.vpc.default_security_group_id ]
   create_security_group = false
@@ -57,6 +58,36 @@ module "vpc" {
   azs = local.azs
   public_subnets = [ "10.0.1.0/24", "10.0.2.0/24" ]
 }
+
+module "ec2_b" {
+  source = "terraform-aws-modules/ec2-instance/aws"
+  version = "~> 2.0"
+
+  name = "instance-web_b"
+  instance_count = 1
+  instance_type = "t2.micro"
+  monitoring = true
+  vpc_security_group_ids = [ module.vpc.default_security_group_id ]
+  subnet_id = module.vpc.public_subnets[1]
+  ami = "ami-06c68f701d8090592"
+} 
+
+module "ec2_a" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+
+  for_each = toset(["admin", "web_a"])
+
+  name = "instance-${each.key}"
+
+  instance_type          = "t2.micro"
+  monitoring             = true
+  vpc_security_group_ids = [ module.vpc.default_security_group_id ]
+  subnet_id              = module.vpc.public_subnets[0]
+  ami                    = "ami-06c68f701d8090592"
+  user_data              = file("server.sh")
+}
+
+
 
 resource "aws_iam_server_certificate" "test_cert" {
   name             = "some_test_cert"
