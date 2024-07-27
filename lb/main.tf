@@ -70,6 +70,10 @@ module "ec2_b" {
   vpc_security_group_ids = [ module.vpc.default_security_group_id ]
   subnet_id = module.vpc.public_subnets[1]
   ami = "ami-06c68f701d8090592"
+  user_data              = templatefile("server.tfpl", 
+    {
+        server_name = "WebB"
+    })
 } 
 
 module "ec2_a" {
@@ -84,7 +88,10 @@ module "ec2_a" {
   vpc_security_group_ids = [ module.vpc.default_security_group_id ]
   subnet_id              = module.vpc.public_subnets[0]
   ami                    = "ami-06c68f701d8090592"
-  user_data              = file("server.sh")
+  user_data              = templatefile("server.tfpl", 
+    {
+        server_name = "WebA"
+    })
 }
 
 
