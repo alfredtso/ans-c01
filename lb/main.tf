@@ -23,15 +23,14 @@ module "alb" {
 
   security_groups = [ module.vpc.default_security_group_id ]
   create_security_group = false
-  security_group_ingress_rules = {
-  all_https = {
-    from_port   = 443
-    to_port     = 443
-    ip_protocol = "tcp"
-    description = "HTTPS web traffic"
-    cidr_ipv4   = "0.0.0.0/0"
-    }
-  }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "https_in" {
+  security_group_id = module.vpc.default_security_group_id
+  cidr_ipv4   = "0.0.0.0/0"
+  from_port   = 443
+  ip_protocol = "tcp"
+  to_port     = 443
 }
 
 resource "aws_lb_listener" "testing" {
