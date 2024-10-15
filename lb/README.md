@@ -25,3 +25,4 @@ module.vpc.aws_subnet.public[0]
 module.vpc.aws_subnet.public[1]
 module.vpc.aws_vpc.this[0]
 ```
+- Do `terraform console` to see the values of the resources created
